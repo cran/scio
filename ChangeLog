@@ -1,3 +1,11 @@
+2014-01-14  Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
+
+	* Version 0.6: added scio.refit based on QUIC
+
+2014-01-05  Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
+	
+	* Version 0.5: added scio.cv
+
 2012-04-23  Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
 
 	* Version 0.4.1: first public release on CRAN

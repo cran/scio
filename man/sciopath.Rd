@@ -32,9 +32,10 @@ A list with components:
 }
 
 \references{
-  Weidong Liu and Xi Luo (2012). High-dimensional Sparse Precision
-  Matrix Estimation via Sparse Column Inverse Operator. arXiv:1203.3896.
+  Weidong Liu and Xi Luo (2012). Fast and Adaptive Sparse Precision
+  Matrix Estimation in High Dimensions. arXiv:1203.3896.
 }
+
 \examples{
 set.seed(100)
 x <- matrix(rnorm(50*20),ncol=4)

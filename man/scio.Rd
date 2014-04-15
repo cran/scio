@@ -31,8 +31,8 @@ scio(S, lambda,  thr=1e-4, maxit=1e4, pen.diag=F, sym=T)
 }
 
 \references{
-   Weidong Liu and Xi Luo (2012). High-dimensional Sparse Precision
-   Matrix Estimation via Sparse Column Inverse Operator. arXiv:1203.3896.
+  Weidong Liu and Xi Luo (2012). Fast and Adaptive Sparse Precision
+  Matrix Estimation in High Dimensions. arXiv:1203.3896.
 }
 \examples{
 set.seed(100)

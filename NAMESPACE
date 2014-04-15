@@ -1,3 +1,5 @@
 export(scio)
 export(sciopath)
+export(scio.cv)
+export(scio.refit)
 useDynLib(scio)
