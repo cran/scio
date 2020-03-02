@@ -5,7 +5,7 @@
   Refitted SCIO Estimators using Penalized Likelihood
 }
 \usage{
-scio.refit(S, Omega,thr=1e-4, ...)
+scio.refit(S, Omega,thr=1e-4, pkg = c("QUIC","glasso"),...)
 }
 \arguments{
 \item{S}{Input covariance matrix of size p by p (symmetric).}
@@ -15,6 +15,7 @@ scio.refit(S, Omega,thr=1e-4, ...)
 \item{thr}{Tolerance. Small entries in magnitude  (<\code{thr}) in \code{Omega}
  are treated as zeros when refitting the precision matrix with the same
  support as the \code{scio} or \code{sciopath} outputs.  Default 1e-4.}
+\item{pkg}{R packge to be used for refitting. Default \code{QUIC}.}
 \item{...}{Additional options passed on to \code{QUIC}, which is the
   only likelihood solver called in the current release. More solvers
   will be included in future releases.}
@@ -46,7 +47,7 @@ x<-matrix(rnorm(50*20),ncol=4)
 s<- var(x)
 a<-scio(s, lambda=.01)
 
-require(QUIC) 
+require(glasso) 
 b <- scio.refit(s, a$w)
 }
 \keyword{multivariate}

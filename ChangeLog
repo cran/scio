@@ -1,3 +1,20 @@
+
+2020-02-03  Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
+
+	* Version 0.7.2: fix cran R warnings
+
+2015-10-04  Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
+
+	* Version 0.7.1: unpenalize diagonal in scio.refit
+
+2014-07-17  Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
+
+	* Version 0.7: improved scio.reft via warm starts
+
+2014-07-10   Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
+
+	* Version 0.6.1: export functions scio.refit and scio.cv
+
 2014-01-14  Xi (Rossi) LUO  <xi.rossi.luo@gmail.com>
 
 	* Version 0.6: added scio.refit based on QUIC

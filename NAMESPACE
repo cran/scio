@@ -1,5 +1,11 @@
+useDynLib(scio)
+
 export(scio)
 export(sciopath)
 export(scio.cv)
 export(scio.refit)
-useDynLib(scio)
+
+importFrom("stats", "cov")
+importFrom("QUIC", "QUIC")
+importFrom("glasso", "glasso")
+

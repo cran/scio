@@ -5,23 +5,30 @@
 !     version 0.1.5 on June 13, 2011
 !     version 0.2  on August 26, 2011
 !     version 0.3  on March 23, 2012
+!     version 0.4 
       subroutine solveColA(n,ic,S,b,rhocol,thr,maxit, niter)
 !     Add active set strategy
       implicit double precision(a-h,o-z)
       parameter(eps=1e-6)
       double precision S(n,n), b(n), rhocol(n)
       double precision, dimension (:), allocatable :: ss
+      double precision, dimension (:), allocatable :: negb
       logical, dimension(:), allocatable :: ja
       logical ia
+      ia = .false.
       allocate(ss(1:n), stat=ierr)
       allocate(ja(1:n), stat=ierr)
-!     Loop trhough
-      ss = matmul(S,-b)
-      ia = .false.
+      allocate(negb(1:n), stat=ierr)
+!     Loop through
+      ss(1:n) = 0.0
+      negb(1:n) = -1.0*b(1:n)
+      ss = matmul(S,negb)
+!      ia = .false.
       ja(1:n) = .true.
       
       thr50=50.0*thr
       
+
       do 101 niter=1,maxit
 !     Through Loop
          dlx=0.0
@@ -36,7 +43,7 @@
             vth = abs(v) - rhocol(j)
             if (vth .gt. 0.0) b(j) = sign(vth, v)/S(j,j) 
 !     if (niter .lt. 5) call intpr("j",1,j,1)
-            if (bj.eq.b(j)) goto 102
+            if ( abs(bj-b(j)).lt.eps ) goto 102
             del = b(j)-bj
             dlx = max(dlx, abs(del))
             ss = ss - del*S(:,j)
@@ -47,7 +54,7 @@
             if (dlx .lt. thr) goto 103
             if (dlx .lt. thr50) then
                ia = .true.
-               ja(1:n) = b(1:n).eq.0.0
+               ja(1:n) = abs(b(1:n)).lt.eps
             endif
          endif
  101  continue
@@ -106,6 +113,8 @@
       jerr = 0
       allocate(rhomat(1:n, 1:n), stat=ierr)
       jerr = jerr + ierr
+      if (ierr.gt.0) goto 301
+      rhomat = 0.0
       rhomat = rho
       if (idiag .eq. 0) then
          do ijj = 1, n
@@ -133,7 +142,7 @@
          nniter = max(nniter, niter)
  105  continue
 !     call dblepr("wlist",5,wlist(:,:,10),n*n)
-      if (allocated(rhomat)) deallocate(rhomat)
+ 301  if (allocated(rhomat)) deallocate(rhomat)
       return
       end
       
